@@ -6,6 +6,33 @@
 
 #define MAX_LOADSTRING 100
 
+FLOAT shapeWidth = 200.0f;
+FLOAT shapeHeight = 100.0f;
+
+/*
+    Right
+    X + width
+    Y + hight/2
+
+    Left
+    X
+    Y + hight/2
+
+    Up
+    X + width/2
+    Y
+
+    Down
+    X + width/2
+    Y + height
+*/
+
+class Sizes {
+    int x, y;
+public:
+    int XYs(int x, int y) {  }
+};
+
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
@@ -38,42 +65,70 @@ VOID OnPaint(HDC hdc) {
     Graphics graphics(hdc);
     
 }
-VOID StartEndBlock(HDC hdc, INT typo) {
-   Graphics graphics(hdc);
-   Pen bluePen(Color(255, 0, 0, 255));
-   RectF ellipseRect(0.0f, 0.0f, 200.0f, 100.0f);
-   SolidBrush brush(Color(255, 0, 0, 255));
-   FontFamily fontFamily(L"Arial");
-   Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
-   PointF pointF(10.0f, 20.0f);
-
-   if (typo == 0) {
-       graphics.DrawString(L"start", -1, &font, pointF, &brush);
-       graphics.DrawEllipse(&bluePen, ellipseRect);
-   }
-   else if (typo == 1) {
-       graphics.DrawString(L"end", -1, &font, pointF, &brush);
-       graphics.DrawEllipse(&bluePen, ellipseRect);
-   }
-}
-VOID Test(HDC hdc) {
+VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
     Graphics graphics(hdc);
-    WCHAR string[] = L"Start";
+    Pen bluePen(Color(255, 0, 0, 255));
+    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(255, 0, 0, 255));
 
-    FontFamily   fontFamily(L"Arial");
-    Font         font(&fontFamily, 12, FontStyleBold, UnitPoint);
-    RectF        ellipseRect(30.0f, 10.0f, 200.0f, 100.0f);
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
     StringFormat stringFormat;
     SolidBrush   solidBrush(Color(255, 0, 0, 255));
 
     stringFormat.SetAlignment(StringAlignmentCenter);
     stringFormat.SetLineAlignment(StringAlignmentCenter);
-
-    graphics.DrawString(string, -1, &font, ellipseRect, &stringFormat, &solidBrush);
-
-    Pen pen(Color(255, 0, 0, 0));
-    graphics.DrawEllipse(&pen, ellipseRect);
+    graphics.DrawString(L"start", -1, &font, ellipseRect, &stringFormat, &solidBrush);
+    graphics.DrawEllipse(&bluePen, ellipseRect);
 }
+VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen bluePen(Color(255, 0, 0, 255));
+    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(255, 0, 0, 255));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush   solidBrush(Color(255, 0, 0, 255));
+
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawString(L"end", -1, &font, ellipseRect, &stringFormat, &solidBrush);
+    graphics.DrawEllipse(&bluePen, ellipseRect);
+}
+
+VOID TestArrow(HDC hdc, FLOAT a, FLOAT b, INT direction) {
+    Graphics graphics(hdc);
+    
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    Pen blackPen(Color(255, 0, 0, 255));
+    blackPen.SetCustomStartCap(&cap1);
+    blackPen.SetCustomEndCap(&cap2);
+
+    int first, second, third;
+
+    switch (direction) {
+        case 1:
+            first = 10; second = 20; third = 10;
+        default:
+            first, second, third = a;
+    }
+
+    graphics.DrawLine(&blackPen, a, a, a, b);
+}
+
 
 WINMAIN {
     HWND hWnd; MSG msg; WNDCLASS wndClass;
@@ -157,7 +212,16 @@ WINPROCESSING {
         case WM_PAINT: {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            OnPaint(hdc); Test(hdc);
+            OnPaint(hdc);
+
+            INT a = 30;
+            INT b = 160;
+            
+            StartBlock(hdc, a, a);
+            EndBlock(hdc, a, b);
+
+            TestArrow(hdc, a + shapeWidth / 2, b, 1);
+
             //StartEndBlock(hdc, 0); //MatinyanNamak(hdc);
             EndPaint(hWnd, &ps);
         }
