@@ -1,8 +1,8 @@
-// Matinyan.cpp : Defines the entry point for the application.
-//
+// Matinyan.cpp - ste che //
 
 #include "framework.h"
 #include "Matinyan.h"
+#include <string>
 
 #define MAX_LOADSTRING 100
 
@@ -12,6 +12,7 @@ WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
 using namespace Gdiplus;
+using namespace std;
 #pragma comment (lib, "Gdiplus.lib")
 
 // Forward declarations of functions included in this code module:
@@ -19,24 +20,12 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+VOID StartEndBlock(HDC, int);
 
-VOID MatinyanNamak(HDC hdc) {
-    Graphics    graphics(hdc);
-
-    GraphicsPath path;
-    Pen penJoin(Color(255, 0, 0, 255), 8);
-
-    path.StartFigure();
-    path.AddLine(Point(50, 200), Point(100, 200));
-    path.AddLine(Point(100, 200), Point(100, 250));
-
-    penJoin.SetLineJoin(LineJoinBevel);
-    graphics.DrawPath(&penJoin, &path);
-}
-VOID OnPaint(HDC hdc) {
+VOID OnPaint0(HDC hdc) {
     Graphics graphics(hdc);
-    /*Pen      pen(Color(255, 0, 0, 255));
-    graphics.DrawLine(&pen, 0, 0, 200, 100);*/
+
+    // Create a Pen object.
     Pen blackPen(Color(255, 0, 0, 0), 3);
 
     // Create a RectF object.
@@ -44,6 +33,46 @@ VOID OnPaint(HDC hdc) {
 
     // Draw rect.
     graphics.DrawRectangle(&blackPen, rect);
+}
+VOID OnPaint(HDC hdc) {
+    Graphics graphics(hdc);
+    
+}
+VOID StartEndBlock(HDC hdc, INT typo) {
+   Graphics graphics(hdc);
+   Pen bluePen(Color(255, 0, 0, 255));
+   RectF ellipseRect(0.0f, 0.0f, 200.0f, 100.0f);
+   SolidBrush brush(Color(255, 0, 0, 255));
+   FontFamily fontFamily(L"Arial");
+   Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+   PointF pointF(10.0f, 20.0f);
+
+   if (typo == 0) {
+       graphics.DrawString(L"start", -1, &font, pointF, &brush);
+       graphics.DrawEllipse(&bluePen, ellipseRect);
+   }
+   else if (typo == 1) {
+       graphics.DrawString(L"end", -1, &font, pointF, &brush);
+       graphics.DrawEllipse(&bluePen, ellipseRect);
+   }
+}
+VOID Test(HDC hdc) {
+    Graphics graphics(hdc);
+    WCHAR string[] = L"Start";
+
+    FontFamily   fontFamily(L"Arial");
+    Font         font(&fontFamily, 12, FontStyleBold, UnitPoint);
+    RectF        ellipseRect(30.0f, 10.0f, 200.0f, 100.0f);
+    StringFormat stringFormat;
+    SolidBrush   solidBrush(Color(255, 0, 0, 255));
+
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+
+    graphics.DrawString(string, -1, &font, ellipseRect, &stringFormat, &solidBrush);
+
+    Pen pen(Color(255, 0, 0, 0));
+    graphics.DrawEllipse(&pen, ellipseRect);
 }
 
 WINMAIN {
@@ -128,7 +157,8 @@ WINPROCESSING {
         case WM_PAINT: {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            OnPaint(hdc); //MatinyanNamak(hdc);
+            OnPaint(hdc); Test(hdc);
+            //StartEndBlock(hdc, 0); //MatinyanNamak(hdc);
             EndPaint(hWnd, &ps);
         }
         break;

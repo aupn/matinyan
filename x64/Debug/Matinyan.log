@@ -1,4 +1,4 @@
 ﻿  Matinyan.cpp
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(50,10): warning C4101: 'hWnd': unreferenced local variable
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(50,34): warning C4101: 'wndClass': unreferenced local variable
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(79,10): warning C4101: 'hWnd': unreferenced local variable
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(79,34): warning C4101: 'wndClass': unreferenced local variable
   Matinyan.vcxproj -> C:\Users\Ash\Desktop\proj\Matinyan\x64\Debug\Matinyan.exe
