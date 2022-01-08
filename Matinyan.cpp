@@ -49,6 +49,8 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 VOID StartEndBlock(HDC, int);
 
+
+
 VOID OnPaint0(HDC hdc) {
     Graphics graphics(hdc);
 
@@ -100,7 +102,7 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     graphics.DrawEllipse(&bluePen, ellipseRect);
 }
 
-VOID TestArrow(HDC hdc, FLOAT a, FLOAT b, INT direction) {
+VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
     Graphics graphics(hdc);
     
     AdjustableArrowCap cap1(1, 1, false);
@@ -117,18 +119,8 @@ VOID TestArrow(HDC hdc, FLOAT a, FLOAT b, INT direction) {
     blackPen.SetCustomStartCap(&cap1);
     blackPen.SetCustomEndCap(&cap2);
 
-    int first, second, third;
-
-    switch (direction) {
-        case 1:
-            first = 10; second = 20; third = 10;
-        default:
-            first, second, third = a;
-    }
-
     graphics.DrawLine(&blackPen, a, a, a, b);
 }
-
 
 WINMAIN {
     HWND hWnd; MSG msg; WNDCLASS wndClass;
@@ -213,16 +205,14 @@ WINPROCESSING {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             OnPaint(hdc);
-
-            INT a = 30;
-            INT b = 160;
             
+            INT a, b; a = 30; b = 160;
+
             StartBlock(hdc, a, a);
             EndBlock(hdc, a, b);
 
-            TestArrow(hdc, a + shapeWidth / 2, b, 1);
+            Arrow1(hdc, a + shapeWidth / 2, b);
 
-            //StartEndBlock(hdc, 0); //MatinyanNamak(hdc);
             EndPaint(hWnd, &ps);
         }
         break;

@@ -1,10 +1,9 @@
 ﻿  Matinyan.cpp
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(126,36): warning C4244: '=': conversion from 'FLOAT' to 'int', possible loss of data
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(134,10): warning C4101: 'hWnd': unreferenced local variable
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(134,34): warning C4101: 'wndClass': unreferenced local variable
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(220,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(220,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(221,30): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(221,27): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(223,48): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(126,10): warning C4101: 'hWnd': unreferenced local variable
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(126,34): warning C4101: 'wndClass': unreferenced local variable
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(211,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(211,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(212,30): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(212,27): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+C:\Users\Ash\Desktop\proj\Matinyan\Matinyan.cpp(214,45): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
   Matinyan.vcxproj -> C:\Users\Ash\Desktop\proj\Matinyan\x64\Debug\Matinyan.exe
