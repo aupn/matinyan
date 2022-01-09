@@ -1,1 +1,2 @@
 C:\Users\Ash\Desktop\proj\Matinyan\x64\Debug\Matinyan.exe
+D:\Documents\GitHub\matinyan\x64\Debug\Matinyan.exe

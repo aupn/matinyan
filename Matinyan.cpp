@@ -102,24 +102,16 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     graphics.DrawEllipse(&bluePen, ellipseRect);
 }
 
-VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
+VOID Arrow1(HDC hdc, FLOAT a, FLOAT b, FLOAT c, FLOAT d) {
     Graphics graphics(hdc);
-    
-    AdjustableArrowCap cap1(1, 1, false);
-    AdjustableArrowCap cap2(2, 1, false);
 
-    cap1.SetBaseCap(LineCapRound);
-    cap1.SetBaseInset(5);
-    cap1.SetStrokeJoin(LineJoinBevel);
-    cap2.SetWidthScale(5);
-    cap2.SetBaseCap(LineCapSquare);
-    cap2.SetHeight(2);
+    Pen pen(Color(255, 0, 0, 255), 8);
+    pen.SetStartCap(LineCapArrowAnchor);
+    graphics.DrawLine(&pen, a, b, c, d);
 
-    Pen blackPen(Color(255, 0, 0, 255));
-    blackPen.SetCustomStartCap(&cap1);
-    blackPen.SetCustomEndCap(&cap2);
-
-    graphics.DrawLine(&blackPen, a, a, a, b);
+    //graphics.DrawLine(&blackPen, a, a, a, b);
+    //graphics.DrawLine(&blackPen, 0, 0, 200, 200);
+    //graphics.DrawLines(&blackPen, 0, 0, 200, 200);
 }
 
 WINMAIN {
@@ -206,12 +198,14 @@ WINPROCESSING {
             HDC hdc = BeginPaint(hWnd, &ps);
             OnPaint(hdc);
             
-            INT a, b; a = 30; b = 160;
+            INT a, b, c, d; 
+            a = 30; b = 160; c = 80; d = 200;
 
             StartBlock(hdc, a, a);
+            Arrow1(hdc, a, b, c, d);
             EndBlock(hdc, a, b);
-
-            Arrow1(hdc, a + shapeWidth / 2, b);
+            Arrow1(hdc, a, b, c, d);
+            EndBlock(hdc, a, a + b);
 
             EndPaint(hWnd, &ps);
         }
