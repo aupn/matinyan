@@ -34,18 +34,28 @@ HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
 WCHAR szWindowClass[MAX_LOADSTRING];
 
+<<<<<<< HEAD
+=======
+HINSTANCE hInst;
+WCHAR szTitle[MAX_LOADSTRING];
+WCHAR szWindowClass[MAX_LOADSTRING];
+
+using namespace Gdiplus;
+using namespace std;
+#pragma comment (lib, "Gdiplus.lib")
+
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-VOID OnPaint(HDC hdc) {
+<<<<<<< HEAD
+=======
+VOID Rectangle(HDC hdc, FLOAT a, FLOAT b)
+{
     Graphics graphics(hdc);
-}
-
-VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
-    Graphics graphics(hdc);
-    Pen BlackPen(Color(0, 0, 0)); 
+    Pen BlackPen(Color(0, 0, 0));
     RectF ellipseRect(a, b, shapeWidth, shapeHeight);
     SolidBrush brush(Color(0, 0, 0));
 
@@ -54,6 +64,34 @@ VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
     PointF pointF(a, b);
     StringFormat stringFormat;
     SolidBrush   solidBrush(Color(0, 0, 0));
+
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawString(L"Do Something", -1, &font, ellipseRect, &stringFormat, &solidBrush);
+    graphics.DrawEllipse(&BlackPen, ellipseRect);
+}
+
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
+VOID OnPaint(HDC hdc) {
+    Graphics graphics(hdc);
+}
+
+VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+<<<<<<< HEAD
+    Pen BlackPen(Color(0, 0, 0)); 
+=======
+    Pen BlackPen(Color(0, 0, 0));
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
+    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush   solidBrush(Color(0, 0, 0));
+<<<<<<< HEAD
 
     AdjustableArrowCap cap1(1, 1, false);
     AdjustableArrowCap cap2(2, 1, false);
@@ -69,6 +107,8 @@ VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
     BlackPen.SetCustomEndCap(&cap2);
 
     graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + shapeHeight, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+=======
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
 
     stringFormat.SetAlignment(StringAlignmentCenter);
     stringFormat.SetLineAlignment(StringAlignmentCenter);
@@ -92,10 +132,18 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     graphics.DrawString(L"end", -1, &font, ellipseRect, &stringFormat, &solidBrush);
     graphics.DrawEllipse(&BlackPen, ellipseRect);
 }
+<<<<<<< HEAD
 
 /* VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
+=======
+VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
     Graphics graphics(hdc);
+    
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
 
+<<<<<<< HEAD
     AdjustableArrowCap cap1(1, 1, false);
     AdjustableArrowCap cap2(2, 1, false);
 
@@ -112,7 +160,21 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
 
     graphics.DrawLine(&blackPen, a, a, a, b);
 } */
+=======
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
 
+    Pen blackPen(Color(0, 0, 0));
+    blackPen.SetCustomStartCap(&cap1);
+    blackPen.SetCustomEndCap(&cap2);
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
+
+    graphics.DrawLine(&blackPen, a, a, a, b);
+}
 WINMAIN {
     HWND hWnd; MSG msg; WNDCLASS wndClass;
     GDISTART;
@@ -124,13 +186,22 @@ WINMAIN {
     LoadStringW(hInstance, IDC_MATINYAN, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
+<<<<<<< HEAD
     if (!InitInstance(hInstance, nCmdShow))
+=======
+    if(!InitInstance (hInstance, nCmdShow))
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
         return FALSE;
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MATINYAN));
 
+<<<<<<< HEAD
     while (GetMessage(&msg, nullptr, 0, 0)) {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
+=======
+    while(GetMessage(&msg, nullptr, 0, 0)) {
+        if(!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
@@ -139,7 +210,11 @@ WINMAIN {
     GDIEND;
     return (int)msg.wParam;
 }
+<<<<<<< HEAD
 REGISTRATOR{
+=======
+REGISTRATOR {
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
@@ -157,7 +232,11 @@ REGISTRATOR{
 
     return RegisterClassExW(&wcex);
 }
+<<<<<<< HEAD
 INSTANCE{
+=======
+INSTANCE {
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
    hInst = hInstance;
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -191,6 +270,7 @@ WINPROCESSING{
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             OnPaint(hdc);
+<<<<<<< HEAD
 
             INT a = 0, b = shapeHeight * 2;
 
@@ -201,6 +281,13 @@ WINPROCESSING{
             Pen BlackPen(Color(0, 0, 0));
 
 
+=======
+            
+            INT a = 30, b = 150;
+
+            StartBlock(hdc, a, a);
+            Arrow1(hdc, a + shapeWidth / 2, a + b);
+>>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
             EndBlock(hdc, a, a + b);
 
             EndPaint(hWnd, &ps);
