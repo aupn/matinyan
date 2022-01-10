@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "Matinyan.h"
 
+// proizoshol trolling
+
 using namespace Gdiplus;
 using namespace std;
 #pragma comment (lib, "Gdiplus.lib")
