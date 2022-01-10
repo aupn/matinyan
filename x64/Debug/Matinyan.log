@@ -1,12 +1,36 @@
 ﻿  Matinyan.cpp
-D:\Documents\GitHub\matinyan\Matinyan.cpp(49,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(49,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(81,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(81,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(117,10): warning C4101: 'hWnd': unreferenced local variable
-D:\Documents\GitHub\matinyan\Matinyan.cpp(117,34): warning C4101: 'wndClass': unreferenced local variable
-D:\Documents\GitHub\matinyan\Matinyan.cpp(197,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(197,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(204,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
-D:\Documents\GitHub\matinyan\Matinyan.cpp(204,27): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(32,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(32,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(64,38): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(64,26): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(104,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(104,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(105,52): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(105,46): warning C4244: 'argument': conversion from 'int' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(139,38): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(139,26): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(181,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(181,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(214,38): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(214,26): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(254,41): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(254,29): warning C4244: 'argument': conversion from 'INT' to 'Gdiplus::REAL', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(270,10): warning C4101: 'hWnd': unreferenced local variable
+D:\Documents\GitHub\matinyan\Matinyan.cpp(270,34): warning C4101: 'wndClass': unreferenced local variable
+D:\Documents\GitHub\matinyan\Matinyan.cpp(369,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(369,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(371,31): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(371,28): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(373,31): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(373,28): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(375,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(375,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(377,31): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(377,28): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(379,32): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(379,29): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(381,30): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+D:\Documents\GitHub\matinyan\Matinyan.cpp(381,27): warning C4244: 'argument': conversion from 'INT' to 'FLOAT', possible loss of data
+  graph.cpp
+  Generating Code...
   Matinyan.vcxproj -> D:\Documents\GitHub\matinyan\x64\Debug\Matinyan.exe

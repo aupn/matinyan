@@ -12,3 +12,5 @@
 #define GDISTART GdiplusStartupInput gdiplusStartupInput; ULONG_PTR gdiplusToken; GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 #define GDIEND GdiplusShutdown(gdiplusToken);
 #define WINPROCESSING LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+#define MAX_LOADSTRING 100
+#define SZES WCHAR szTitle[MAX_LOADSTRING]; WCHAR szWindowClass[MAX_LOADSTRING];

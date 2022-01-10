@@ -5,7 +5,11 @@
       <FullPath>D:\Documents\GitHub\matinyan\x64\Debug\Matinyan.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\Documents\GitHub\matinyan\html1.htm</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

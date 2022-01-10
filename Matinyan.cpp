@@ -1,97 +1,42 @@
 #include "framework.h"
 #include "Matinyan.h"
-#include "graph.h"
-#include <string>
 
 using namespace Gdiplus;
 using namespace std;
 #pragma comment (lib, "Gdiplus.lib")
 
-#define MAX_LOADSTRING 100
+INT shapeWidth = 100;
+INT shapeHeight = 50;
+INT a = 200, b = shapeHeight * 2;
+INT c = a + b;
+INT d = a + b * 2;
+INT e = a + b * 3;
+INT f = a + b * 4;
+INT g = a + b * 5;
+INT h = a + b * 6;
 
-INT shapeWidth = 250;
-INT shapeHeight = 100;
+HINSTANCE hInst; SZES;
 
-/*
-    Right
-    X + width
-    Y + hight/2
+ATOM MyRegisterClass(HINSTANCE hInstance);
+BOOL InitInstance(HINSTANCE, int);
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK About(HWND, UINT, WPARAM, LPARAM);
 
-    Left
-    X
-    Y + hight/2
-
-    Up
-    X + width/2
-    Y
-
-    Down
-    X + width/2
-    Y + height
-*/
-
-HINSTANCE hInst;
-WCHAR szTitle[MAX_LOADSTRING];
-WCHAR szWindowClass[MAX_LOADSTRING];
-
-<<<<<<< HEAD
-=======
-HINSTANCE hInst;
-WCHAR szTitle[MAX_LOADSTRING];
-WCHAR szWindowClass[MAX_LOADSTRING];
-
-using namespace Gdiplus;
-using namespace std;
-#pragma comment (lib, "Gdiplus.lib")
-
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
-ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
-LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-
-<<<<<<< HEAD
-=======
-VOID Rectangle(HDC hdc, FLOAT a, FLOAT b)
-{
-    Graphics graphics(hdc);
-    Pen BlackPen(Color(0, 0, 0));
-    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
-    SolidBrush brush(Color(0, 0, 0));
-
-    FontFamily fontFamily(L"Arial");
-    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
-    PointF pointF(a, b);
-    StringFormat stringFormat;
-    SolidBrush   solidBrush(Color(0, 0, 0));
-
-    stringFormat.SetAlignment(StringAlignmentCenter);
-    stringFormat.SetLineAlignment(StringAlignmentCenter);
-    graphics.DrawString(L"Do Something", -1, &font, ellipseRect, &stringFormat, &solidBrush);
-    graphics.DrawEllipse(&BlackPen, ellipseRect);
-}
-
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
 VOID OnPaint(HDC hdc) {
     Graphics graphics(hdc);
 }
 
 VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
     Graphics graphics(hdc);
-<<<<<<< HEAD
-    Pen BlackPen(Color(0, 0, 0)); 
-=======
     Pen BlackPen(Color(0, 0, 0));
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
     RectF ellipseRect(a, b, shapeWidth, shapeHeight);
     SolidBrush brush(Color(0, 0, 0));
 
     FontFamily fontFamily(L"Arial");
-    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
     PointF pointF(a, b);
     StringFormat stringFormat;
     SolidBrush   solidBrush(Color(0, 0, 0));
-<<<<<<< HEAD
 
     AdjustableArrowCap cap1(1, 1, false);
     AdjustableArrowCap cap2(2, 1, false);
@@ -107,13 +52,201 @@ VOID StartBlock(HDC hdc, FLOAT a, FLOAT b) {
     BlackPen.SetCustomEndCap(&cap2);
 
     graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + shapeHeight, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
-=======
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
 
     stringFormat.SetAlignment(StringAlignmentCenter);
     stringFormat.SetLineAlignment(StringAlignmentCenter);
     graphics.DrawString(L"start", -1, &font, ellipseRect, &stringFormat, &solidBrush);
     graphics.DrawEllipse(&BlackPen, ellipseRect);
+}
+VOID PolyBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen BlackPen(Color(0, 0, 0));
+    RectF polyRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush solidBrush(Color(0, 0, 0));
+
+    PointF pt1 = PointF(a + 0.0F, b + shapeHeight);  //  X = 0, Y = 100 UP
+    PointF pt2 = PointF(a + 30.0F, b + 0.0F);   //  X = 30, Y = 0  RIGHT
+    PointF pt3 = PointF(a + shapeWidth, b + 0.0F);  //  X = 200, Y = 0  DOWN
+    PointF pt4 = PointF(a + shapeWidth - 30.0F, b + shapeHeight);//  X = 170 (200 - 30), Y = 100 LEFT
+    PointF pts[4] = { pt1, pt2, pt3, pt4 };
+
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    BlackPen.SetCustomStartCap(&cap1);
+    BlackPen.SetCustomEndCap(&cap2);
+
+    //graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + (INT)b, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+    graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, c + shapeHeight, (INT)a + shapeWidth / 2, c + shapeHeight * 2);
+
+    // Draw polygon
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawPolygon(&BlackPen, pts, 4);
+    graphics.DrawString(L"rect", -1, &font, polyRect, &stringFormat, &solidBrush);
+}
+VOID CaseBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen BlackPen(Color(0, 0, 0));
+    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
+    RectF ellipseRect2(a - 15, b, shapeWidth + 30, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush solidBrush(Color(0, 0, 0));
+
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    BlackPen.SetCustomStartCap(&cap1);
+    BlackPen.SetCustomEndCap(&cap2);
+
+    //graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + (INT)b, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+    graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, d + shapeHeight, (INT)a + shapeWidth / 2, d + shapeHeight * 2);
+
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawString(L"esimwhat", -1, &font, ellipseRect, &stringFormat, &solidBrush);
+    graphics.DrawRectangle(&BlackPen, ellipseRect);
+    graphics.DrawRectangle(&BlackPen, ellipseRect2);
+}
+VOID MultiBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen BlackPen(Color(0, 0, 0));
+    RectF polyRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush solidBrush(Color(0, 0, 0));
+
+    PointF pt1 = PointF(a + 0.0F, b + shapeHeight/2);  //  X = 0, Y = 100 UP
+    PointF pt2 = PointF(a + 20.0F, b - 0.0F);   //  X = 30, Y = 0  RIGHT
+    PointF pt3 = PointF(a + shapeWidth - 20.0F, b + 0.0F);  //  X = 200, Y = 0  DOWN
+    PointF pt4 = PointF(a + shapeWidth, b + shapeHeight/2);//  X = 170 (200 - 30), Y = 100 LEFT
+    PointF pt5 = PointF(a + shapeWidth - 20.0F, b + 50.0F);   //  X = 30, Y = 0  RIGHT
+    PointF pt6 = PointF(a + 20.0F, b + 50.0F);  //  X = 200, Y = 0  DOWN
+    PointF pts[6] = { pt1, pt2, pt3, pt4, pt5, pt6 };
+
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    BlackPen.SetCustomStartCap(&cap1);
+    BlackPen.SetCustomEndCap(&cap2);
+
+    //graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + (INT)b, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+    graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, e + shapeHeight, (INT)a + shapeWidth / 2, e + shapeHeight * 2);
+
+    // Draw polygon
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawPolygon(&BlackPen, pts, 6);
+    graphics.DrawString(L"Loop", -1, &font, polyRect, &stringFormat, &solidBrush);
+}
+VOID RectBlock(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen BlackPen(Color(0, 0, 0));
+    RectF ellipseRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush solidBrush(Color(0, 0, 0));
+
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    BlackPen.SetCustomStartCap(&cap1);
+    BlackPen.SetCustomEndCap(&cap2);
+
+    //graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + (INT)b, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+    graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, f + shapeHeight, (INT)a + shapeWidth / 2, f + shapeHeight * 2);
+
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawString(L"Do something", -1, &font, ellipseRect, &stringFormat, &solidBrush);
+    graphics.DrawRectangle(&BlackPen, ellipseRect);
+}
+VOID PolyBlock2(HDC hdc, FLOAT a, FLOAT b) {
+    Graphics graphics(hdc);
+    Pen BlackPen(Color(0, 0, 0));
+    RectF polyRect(a, b, shapeWidth, shapeHeight);
+    SolidBrush brush(Color(0, 0, 0));
+
+    FontFamily fontFamily(L"Arial");
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
+    PointF pointF(a, b);
+    StringFormat stringFormat;
+    SolidBrush solidBrush(Color(0, 0, 0));
+
+    PointF pt1 = PointF(a + 0.0F, b + shapeHeight);  //  X = 0, Y = 100 UP
+    PointF pt2 = PointF(a + 30.0F, b + 0.0F);   //  X = 30, Y = 0  RIGHT
+    PointF pt3 = PointF(a + shapeWidth, b + 0.0F);  //  X = 200, Y = 0  DOWN
+    PointF pt4 = PointF(a + shapeWidth - 30.0F, b + shapeHeight);//  X = 170 (200 - 30), Y = 100 LEFT
+    PointF pts[4] = { pt1, pt2, pt3, pt4 };
+
+    AdjustableArrowCap cap1(1, 1, false);
+    AdjustableArrowCap cap2(2, 1, false);
+
+    cap1.SetBaseCap(LineCapRound);
+    cap1.SetBaseInset(5);
+    cap1.SetStrokeJoin(LineJoinBevel);
+    cap2.SetWidthScale(5);
+    cap2.SetBaseCap(LineCapSquare);
+    cap2.SetHeight(2);
+
+    BlackPen.SetCustomStartCap(&cap1);
+    BlackPen.SetCustomEndCap(&cap2);
+
+    //graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, (INT)a + (INT)b, (INT)a + shapeWidth / 2, (INT)a + shapeHeight * 2);
+    graphics.DrawLine(&BlackPen, (INT)a + shapeWidth / 2, g + shapeHeight, (INT)a + shapeWidth / 2, g + shapeHeight * 2);
+
+    // Draw polygon
+    stringFormat.SetAlignment(StringAlignmentCenter);
+    stringFormat.SetLineAlignment(StringAlignmentCenter);
+    graphics.DrawPolygon(&BlackPen, pts, 4);
+    graphics.DrawString(L"rect", -1, &font, polyRect, &stringFormat, &solidBrush);
 }
 VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     Graphics graphics(hdc);
@@ -122,7 +255,7 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     SolidBrush brush(Color(0, 0, 0));
 
     FontFamily fontFamily(L"Arial");
-    Font font(&fontFamily, 24, FontStyleRegular, UnitPixel);
+    Font font(&fontFamily, 16, FontStyleRegular, UnitPixel);
     PointF pointF(a, b);
     StringFormat stringFormat;
     SolidBrush   solidBrush(Color(0, 0, 0));
@@ -132,49 +265,7 @@ VOID EndBlock(HDC hdc, FLOAT a, FLOAT b) {
     graphics.DrawString(L"end", -1, &font, ellipseRect, &stringFormat, &solidBrush);
     graphics.DrawEllipse(&BlackPen, ellipseRect);
 }
-<<<<<<< HEAD
 
-/* VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
-=======
-VOID Arrow1(HDC hdc, FLOAT a, FLOAT b) {
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
-    Graphics graphics(hdc);
-    
-    AdjustableArrowCap cap1(1, 1, false);
-    AdjustableArrowCap cap2(2, 1, false);
-
-<<<<<<< HEAD
-    AdjustableArrowCap cap1(1, 1, false);
-    AdjustableArrowCap cap2(2, 1, false);
-
-    cap1.SetBaseCap(LineCapRound);
-    cap1.SetBaseInset(5);
-    cap1.SetStrokeJoin(LineJoinBevel);
-    cap2.SetWidthScale(5);
-    cap2.SetBaseCap(LineCapSquare);
-    cap2.SetHeight(2);
-
-    Pen blackPen(Color(0, 0, 0));
-    blackPen.SetCustomStartCap(&cap1);
-    blackPen.SetCustomEndCap(&cap2);
-
-    graphics.DrawLine(&blackPen, a, a, a, b);
-} */
-=======
-    cap1.SetBaseCap(LineCapRound);
-    cap1.SetBaseInset(5);
-    cap1.SetStrokeJoin(LineJoinBevel);
-    cap2.SetWidthScale(5);
-    cap2.SetBaseCap(LineCapSquare);
-    cap2.SetHeight(2);
-
-    Pen blackPen(Color(0, 0, 0));
-    blackPen.SetCustomStartCap(&cap1);
-    blackPen.SetCustomEndCap(&cap2);
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
-
-    graphics.DrawLine(&blackPen, a, a, a, b);
-}
 WINMAIN {
     HWND hWnd; MSG msg; WNDCLASS wndClass;
     GDISTART;
@@ -186,22 +277,13 @@ WINMAIN {
     LoadStringW(hInstance, IDC_MATINYAN, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-<<<<<<< HEAD
-    if (!InitInstance(hInstance, nCmdShow))
-=======
     if(!InitInstance (hInstance, nCmdShow))
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
         return FALSE;
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MATINYAN));
 
-<<<<<<< HEAD
-    while (GetMessage(&msg, nullptr, 0, 0)) {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
-=======
     while(GetMessage(&msg, nullptr, 0, 0)) {
         if(!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
@@ -210,11 +292,8 @@ WINMAIN {
     GDIEND;
     return (int)msg.wParam;
 }
-<<<<<<< HEAD
-REGISTRATOR{
-=======
+
 REGISTRATOR {
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
@@ -232,11 +311,8 @@ REGISTRATOR {
 
     return RegisterClassExW(&wcex);
 }
-<<<<<<< HEAD
-INSTANCE{
-=======
+
 INSTANCE {
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
    hInst = hInstance;
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -250,7 +326,7 @@ INSTANCE {
    return TRUE;
 }
 
-WINPROCESSING{
+WINPROCESSING {
     switch (message) {
         case WM_COMMAND: {
             int wmId = LOWORD(wParam);
@@ -270,25 +346,39 @@ WINPROCESSING{
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             OnPaint(hdc);
-<<<<<<< HEAD
 
-            INT a = 0, b = shapeHeight * 2;
+            /*INT sc = 4;
+            for (INT i = 0; i < sc; i++) {
+                INT bc = a + b * i + 1;
+                if (i == sc - 1) {
+                    EndBlock(hdc, a, bc);
+                }
+                else {
+                    PolyBlock(hdc, a, bc);
+                }
+            }*/
+
+            /*INT _a(i) = a;
+            for (INT i = 0; i < 10; i++) {
+                if (i < _a) {
+                    i = _a;
+                    _a = _a + b;
+                }
+            }*/
 
             StartBlock(hdc, a, a);
-            //Arrow1(hdc, a + shapeWidth / 2, a + b);
-            
-            Graphics graphics(hdc);
-            Pen BlackPen(Color(0, 0, 0));
 
+            PolyBlock(hdc, a, c);
 
-=======
-            
-            INT a = 30, b = 150;
+            CaseBlock(hdc, a, d);
 
-            StartBlock(hdc, a, a);
-            Arrow1(hdc, a + shapeWidth / 2, a + b);
->>>>>>> a7edbb5b02c8df836356b71dfaee341b4823d166
-            EndBlock(hdc, a, a + b);
+            MultiBlock(hdc, a, e);
+
+            RectBlock(hdc, a, f);
+
+            PolyBlock2(hdc, a, g);
+
+            EndBlock(hdc, a, h);
 
             EndPaint(hWnd, &ps);
         }
@@ -302,7 +392,7 @@ WINPROCESSING{
     return 0;
 }
 
-ABOUTFX{
+ABOUTFX {
     UNREFERENCED_PARAMETER(lParam);
     switch (message) {
         case WM_INITDIALOG:
